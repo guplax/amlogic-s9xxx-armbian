@@ -53,6 +53,10 @@ inputs:
     description: "Select kernel version"
     required: false
     default: "6.1.y_5.15.y"
+  commit_hash:
+    description: "Specify kernel source commit hash"
+    required: false
+    default: ""
   kernel_auto:
     description: "Auto use the latest kernel"
     required: false
@@ -219,6 +223,7 @@ runs:
             make_command=""
             [[ -n "${{ inputs.kernel_source }}" ]] && make_command="${make_command} -r ${{ inputs.kernel_source }}"
             [[ -n "${{ inputs.kernel_version }}" ]] && make_command="${make_command} -k ${{ inputs.kernel_version }}"
+            [[ -n "${{ inputs.commit_hash }}" ]] && make_command="${make_command} -h ${{ inputs.commit_hash }}"
             [[ -n "${{ inputs.kernel_auto }}" ]] && make_command="${make_command} -a ${{ inputs.kernel_auto }}"
             [[ -n "${{ inputs.kernel_package }}" ]] && make_command="${make_command} -m ${{ inputs.kernel_package }}"
             [[ -n "${{ inputs.auto_patch }}" ]] && make_command="${make_command} -p ${{ inputs.auto_patch }}"

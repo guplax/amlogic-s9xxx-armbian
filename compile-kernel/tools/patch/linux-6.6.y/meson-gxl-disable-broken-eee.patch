@@ -1,0 +1,29 @@
+From mboxrd@z Thu Jan  1 00:00:00 1970
+From: joseph.kogut@gmail.com (Joseph Kogut)
+Date: Thu,  6 Jul 2017 18:32:57 -0700
+Subject: [PATCH] ARM64: meson-gxl: disable broken eee
+Message-ID: <20170707013257.18250-1-joseph.kogut@gmail.com>
+To: linux-arm-kernel@lists.infradead.org
+List-Id: linux-arm-kernel.lists.infradead.org
+
+Meson GXL appears to suffer from the same broken eee issue as GXB,
+originally fixed by feb3cbea0946.
+
+This patch disables the broken energy-efficient ethernet for GXL,
+avoiding the tx link breakage.
+
+Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+---
+ arch/arm64/boot/dts/amlogic/meson-gxl.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl.dtsi
+@@ -806,6 +806,7 @@
+ 				interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
+ 				reg = <8>;
+ 				max-speed = <100>;
++				eee-broken-100tx;
+ 			};
+ 		};
+ 	};
