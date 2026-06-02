@@ -13,15 +13,16 @@ on:
       kernel_source:
         description: "Select the kernel source"
         required: false
-        default: "unifreq"
+        default: "guplax"
         type: choice
         options:
+          - guplax
           - unifreq
           - ophub
       kernel_version:
         description: "Select kernel version"
         required: false
-        default: "6.18.y"
+        default: "6.12.y"
         type: choice
         options:
           - all
@@ -52,7 +53,7 @@ on:
       kernel_toolchain:
         description: "Select the compilation toolchain"
         required: false
-        default: "gcc"
+        default: "gcc-15.2"
         type: choice
         options:
           - clang
@@ -78,9 +79,10 @@ on:
       kernel_sign:
         description: "Set the kernel custom signature"
         required: false
-        default: "-ophub"
+        default: "-guplax"
         type: choice
         options:
+          - -guplax
           - -ophub
           - -yourname
 
